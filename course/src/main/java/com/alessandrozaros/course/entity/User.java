@@ -3,9 +3,19 @@ package com.alessandrozaros.course.entity;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "tb_user") //è importante renomear para não dar conflito pois a palavra User no h2 é uma palavra reservada
 public class User implements Serializable{ //implementa-se a interface Serializable quando precisamos que os objetos sejam transformados em cadeias de bytes para trafegar pela rede
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //vai tornar os ids auto incrementáveis
 	private Long id;
 	private String name;
 	private String email;
