@@ -6,12 +6,14 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="Order"/>
+		<item key="selection" value="Category"/>
 		<list key="findhistory">
-			<item value="User"/>
 			<item value="user"/>
+			<item value="User"/>
 		</list>
 		<list key="replacehistory">
+			<item value="category"/>
+			<item value="Category"/>
 			<item value="Order"/>
 			<item value="order"/>
 		</list>
