@@ -1,0 +1,5 @@
+package com.alessandrozaros.course.entity;
+
+public class Order {
+
+}
