@@ -2,7 +2,9 @@ package com.alessandrozaros.course.entity;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import com.alessandrozaros.course.entity.enums.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -13,6 +15,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -35,6 +38,9 @@ public class Order implements Serializable{
 	@JoinColumn(name = "client_id")
 	private User client;
 	
+	@OneToMany(mappedBy = "id.order")
+	private Set<OrderItem> items = new HashSet<>();
+	
 	public Order() {
 	}
 
@@ -45,7 +51,7 @@ public class Order implements Serializable{
 		setOrderStatus(orderStatus);
 		this.client = client;
 	}
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -79,6 +85,17 @@ public class Order implements Serializable{
 			this.orderStatus = orderStatus.getCode();
 		}
 		
+	}
+	
+	public Set<OrderItem> getItems() {
+		return items;
+	}
+	public Set<Product> getProducts(){
+		Set<Product> set = new HashSet<>();
+		for(OrderItem x : items) {
+			set.add(x.GetProduct());
+		}
+		return set;
 	}
 
 	@Override

@@ -81,6 +81,8 @@ INDEX VERSION 1.134+C:\Users\AGZ\Documents\projetos\.metadata\.plugins\org.eclip
 556941417.index
 4062008643.index
 260196872.index
+2772958900.index
+60296019.index
 4127314490.index
 453039958.index
 2682867192.index
@@ -89,5 +91,3 @@ INDEX VERSION 1.134+C:\Users\AGZ\Documents\projetos\.metadata\.plugins\org.eclip
 646348852.index
 1355535999.index
 1831184082.index
-2772958900.index
-60296019.index
