@@ -20,11 +20,28 @@ public class UserService {
 	}
 	
 	public User findById(Long id) {
-		Optional<User> obj  = userRepository.findById(id);
+		Optional<User> obj  = userRepository.findById(id); // vai no banco de dados e busca o obj
 		return obj.get();
 	}
 	
 	public User insert(User obj) {
 		return userRepository.save(obj);
+	}
+	
+	public void delete(Long id) {
+		userRepository.deleteById(id);
+	}
+	
+	public User update(Long id, User obj) {
+		User entity = userRepository.getReferenceById(id); // monitora , mas ainda não busca o obj, so prepara para poder ser alterado
+		updateData(entity, obj); //atualizar os dados de entity, baseado nos dados de obj
+		return userRepository.save(entity);
+	}
+
+	private void updateData(User entity, User obj) {
+		entity.setName(obj.getName());
+		entity.setEmail(obj.getEmail());   //Nos escolhemos o que atualizar pelo método. Senha e Id não poderão ser atualizados pelo método.
+		entity.setPhone(obj.getPhone());
+	
 	}
 }
