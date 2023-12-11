@@ -1,0 +1,5 @@
+package com.alessandrozaros.course.resources.exceptions;
+
+public class StandardError {
+
+}
