@@ -50,7 +50,6 @@ INDEX VERSION 1.134+C:\Users\AGZ\Documents\projetos\.metadata\.plugins\org.eclip
 3134608694.index
 1947237218.index
 3578460076.index
-3729101479.index
 93036098.index
 655866540.index
 75579590.index

@@ -13,6 +13,8 @@ import com.alessandrozaros.course.repositories.UserRepository;
 import com.alessandrozaros.course.services.exceptions.DatabaseException;
 import com.alessandrozaros.course.services.exceptions.ResourceNotFoundException;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class UserService {
 	
@@ -32,22 +34,26 @@ public class UserService {
 		return userRepository.save(obj);
 	}
 	
-	public void delete(Long id) {
+	public void delete(Long id ) {
 		try {
-		userRepository.deleteById(id);
+			userRepository.deleteById(id);
 		}catch(EmptyResultDataAccessException d) {
-			throw new ResourceNotFoundException(id);
+			throw new ResourceNotFoundException(d.getMessage());
 		}
-		
 		catch(DataIntegrityViolationException e) {
 			throw new DatabaseException(e.getMessage());
 		}
 	}
 	
 	public User update(Long id, User obj) {
+		try {
 		User entity = userRepository.getReferenceById(id); // monitora , mas ainda não busca o obj, so prepara para poder ser alterado
 		updateData(entity, obj); //atualizar os dados de entity, baseado nos dados de obj
 		return userRepository.save(entity);
+		}
+		catch(EntityNotFoundException ef) {
+			throw new ResourceNotFoundException(id);
+		}
 	}
 
 	private void updateData(User entity, User obj) {
